@@ -1,0 +1,29 @@
+name: "What changed"
+description: "Action looks at changed files since last successful workflow run and determines what changed."
+inputs:
+  files:
+    description: "Relevant files"
+    required: true
+  main-branch-name:
+    description: "Name of the main branch"
+    required: false
+    default: main
+outputs:
+  changed:
+    description: "What changed: only-inputs, non-inputs, both"
+    value: ${{ steps.changed-files.outputs.changed }}
+runs:
+  using: "composite"
+  steps:
+    - uses: "actions/checkout@v4"
+      with:
+        fetch-depth: 0
+    - name: Find start and end SHAs
+      uses: nrwl/nx-set-shas@v4
+      id: last-successful-commit-push
+      with:
+        main-branch-name: ${{ inputs.main-branch-name }}
+    - name: Determine what changed
+      id: changed-files
+      shell: python
+      run: what_changed.py ${{ steps.last-successful-commit-push.outputs.base }} ${{ steps.last-successful-commit-push.outputs.head }} ${{ inputs.files }}
