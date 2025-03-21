@@ -10,6 +10,7 @@ PATTERN = "# Generated code below, DO NOT EDIT THIS LINE OR BELOW"
 
 
 def main(options):
+    print(f"Embedding {options.script_file} in {options.action_file} ...")
     indent = " " * options.indent_level
     with open(options.script_file, "r") as f:
         script = f.read()
