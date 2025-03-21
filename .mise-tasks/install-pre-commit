@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#MISE description="Install pre-commit hook"
+
+set -e
+
+echo "mise run build" > .git/hooks/pre-commit
+chmod a+x .git/hooks/pre-commit

@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+#MISE description="Update action.yaml with the what_changed.py script"
+
 import argparse
 import shutil
 import tempfile
