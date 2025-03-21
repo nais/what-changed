@@ -25,5 +25,5 @@ runs:
         main-branch-name: ${{ inputs.main-branch-name }}
     - name: Determine what changed
       id: changed-files
-      shell: python
-      run: what_changed.py ${{ steps.last-successful-commit-push.outputs.base }} ${{ steps.last-successful-commit-push.outputs.head }} ${{ inputs.files }}
+      shell: bash
+      run: python what_changed.py ${{ steps.last-successful-commit-push.outputs.base }} ${{ steps.last-successful-commit-push.outputs.head }} ${{ inputs.files }}
