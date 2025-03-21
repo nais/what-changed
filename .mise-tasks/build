@@ -3,6 +3,7 @@
 
 import argparse
 import shutil
+import subprocess
 import tempfile
 import textwrap
 
@@ -24,7 +25,7 @@ def main(options):
         output.write(textwrap.indent(script, indent))
         output.flush()
         shutil.copy(output.name, options.action_file)
-
+    subprocess.run(["git", "add", options.action_file])
 
 
 if __name__ == '__main__':
