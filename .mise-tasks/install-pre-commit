@@ -3,5 +3,12 @@
 
 set -e
 
-echo "mise run build" > .git/hooks/pre-commit
+cat <<EOF > .git/hooks/pre-commit
+#!/usr/bin/env bash
+
+set -e
+
+mise run build
+EOF
+
 chmod a+x .git/hooks/pre-commit
