@@ -1,13 +1,18 @@
-#!/usr/bin/env python
-
-import argparse
 import glob
 import logging
 import os
 import subprocess
+from dataclasses import dataclass
 from itertools import chain
 
 LOG = logging.getLogger(__name__)
+
+
+@dataclass
+class Options:
+    base: str
+    head: str
+    filepaths: str
 
 
 def setup_logging():
@@ -45,9 +50,9 @@ def main(options):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("base", help="Base commit")
-    parser.add_argument("head", help="Head commit")
-    parser.add_argument("filepaths", help="Comma-separated list of filepaths to check (supports globbing)")
-    options = parser.parse_args()
+    options = Options(
+        os.getenv("INPUT_BASE"),
+        os.getenv("INPUT_HEAD"),
+        os.getenv("INPUT_FILEPATHS"),
+    )
     main(options)
