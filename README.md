@@ -12,3 +12,6 @@ The action takes a list of file paths as input, and outputs a string as follows:
 
 Most of the action is in `what_changed.py`, but this script is embedded in the composite workflow in `action.yaml`.
 In order to update the action, run `mise run build`.
+
+It is recommended to install a pre-commit hook to ensure that the action is built before committing changes.
+You can use `mise run install-pre-commit` to install the hook.
