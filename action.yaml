@@ -15,9 +15,6 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: "actions/checkout@v4"
-      with:
-        fetch-depth: 0
     - name: Find start and end SHAs
       uses: nrwl/nx-set-shas@v4
       id: last-successful-commit-push
