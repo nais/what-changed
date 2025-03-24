@@ -15,6 +15,13 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Check checkout depth
+      shell: bash
+      run: |
+        depth=$(git rev-list --count --all)
+        if [[ $depth -eq 1 ]]; then
+          echo "::warning::To correctly determine what changed, you need to fetch enough git history. Consider setting 'fetch-depth: 0' in your checkout action."
+        fi
     - name: Find start and end SHAs
       uses: nrwl/nx-set-shas@v4
       id: last-successful-commit-push
