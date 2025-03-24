@@ -23,7 +23,7 @@ runs:
           echo "::warning::To correctly determine what changed, you need to fetch enough git history. Consider setting 'fetch-depth: 0' in your checkout action."
         fi
     - name: Find start and end SHAs
-      uses: nrwl/nx-set-shas@v4
+      uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # ratchet:nrwl/nx-set-shas@v4
       id: last-successful-commit-push
       with:
         main-branch-name: ${{ inputs.main-branch-name }}
