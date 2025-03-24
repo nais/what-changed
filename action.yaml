@@ -28,7 +28,7 @@ runs:
         INPUT_HEAD: ${{ steps.last-successful-commit-push.outputs.head }}
         INPUT_FILEPATHS: ${{ inputs.files }}
       run: |
-        # Generated code below, DO NOT EDIT THIS LINE OR BELOW
+        # Embedded code below, DO NOT EDIT THIS LINE OR BELOW
         import glob
         import logging
         import os

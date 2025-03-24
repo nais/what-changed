@@ -7,7 +7,7 @@ import subprocess
 import tempfile
 import textwrap
 
-PATTERN = "# Generated code below, DO NOT EDIT THIS LINE OR BELOW"
+PATTERN = "# Embedded code below, DO NOT EDIT THIS LINE OR BELOW"
 
 
 def main(options):
