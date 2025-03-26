@@ -12,9 +12,11 @@ The action takes a list of file paths as input, and outputs a string as follows:
 
 The action takes two inputs, one of which is required:
 
-- `files`: A comma-separated list of file paths to check for changes. Required.
+- `files`: A comma-separated list of file paths to check for changes.
   The list supports recursive [glob patterns](https://docs.python.org/3/library/glob.html#glob.glob) including hidden files and directories.
-- `main-branch-name`: The name of the main branch. Optional, default is `main`.
+  *Required*.
+- `main-branch-name`: The name of the main branch. 
+  *Optional*, default is `main`.
 
 ## How does it work
 
