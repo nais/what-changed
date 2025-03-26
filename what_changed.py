@@ -29,7 +29,7 @@ def main(options):
     changed_files = set(subprocess.run(cmd, capture_output=True, text=True).stdout.splitlines())
     LOG.debug("Changed files: %r", changed_files)
 
-    input_files = set(chain(*(glob.glob(f.strip()) for f in options.filepaths.split(","))))
+    input_files = set(chain(*(glob.glob(f.strip(), recursive=True, include_hidden=True) for f in options.filepaths.split(","))))
     LOG.debug("Input files: %r", input_files)
 
     if changed_files.issubset(input_files):

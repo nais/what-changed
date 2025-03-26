@@ -2,7 +2,7 @@ name: "What changed"
 description: "Action looks at changed files since last successful workflow run and determines what changed."
 inputs:
   files:
-    description: "Relevant files"
+    description: "A comma-separated list of file paths to check for changes."
     required: true
   main-branch-name:
     description: "Name of the main branch"
@@ -67,7 +67,7 @@ runs:
             changed_files = set(subprocess.run(cmd, capture_output=True, text=True).stdout.splitlines())
             LOG.debug("Changed files: %r", changed_files)
 
-            input_files = set(chain(*(glob.glob(f.strip()) for f in options.filepaths.split(","))))
+            input_files = set(chain(*(glob.glob(f.strip(), recursive=True, include_hidden=True) for f in options.filepaths.split(","))))
             LOG.debug("Input files: %r", input_files)
 
             if changed_files.issubset(input_files):
